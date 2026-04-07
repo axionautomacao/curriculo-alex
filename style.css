@@ -1,0 +1,467 @@
+:root {
+    --bg-main: #050811;
+    --card-bg: rgba(255, 255, 255, 0.03);
+    --card-border: rgba(255, 255, 255, 0.08);
+    --primary: #00E5FF;
+    --primary-glow: rgba(0, 229, 255, 0.3);
+    --text-primary: #F0F6FC;
+    --text-secondary: #8B949E;
+    --font-main: 'Inter', sans-serif;
+    --font-heading: 'Outfit', sans-serif;
+    --accent: #3B82F6;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    font-family: var(--font-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+    background-image: 
+        radial-gradient(circle at 15% 50%, rgba(0, 229, 255, 0.05), transparent 25%),
+        radial-gradient(circle at 85% 30%, rgba(59, 130, 246, 0.05), transparent 25%);
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate {
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+.delay-1 { animation-delay: 0.2s; }
+.delay-2 { animation-delay: 0.4s; }
+.delay-3 { animation-delay: 0.6s; }
+
+/* Header / Hero */
+header {
+    text-align: center;
+    padding: 4rem 0 3rem 0;
+    border-bottom: 1px solid var(--card-border);
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+header::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 20%;
+    right: 20%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--primary), transparent);
+}
+
+h1 {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(to right, #FFF, var(--primary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+h2 {
+    font-family: var(--font-heading);
+    color: var(--primary);
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+}
+
+.contact-info {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+}
+
+.contact-info span, .contact-info a {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-info a:hover {
+    color: var(--primary);
+    text-shadow: 0 0 10px var(--primary-glow);
+}
+
+.contact-info i {
+    color: var(--primary);
+}
+
+/* Sections */
+section {
+    margin-bottom: 4rem;
+}
+
+.section-title {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.section-title i {
+    color: var(--primary);
+    font-size: 1.5rem;
+}
+
+/* Glassmorphism Cards */
+.card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(0, 229, 255, 0.3);
+    box-shadow: 0 10px 30px -10px rgba(0, 229, 255, 0.1);
+}
+
+p {
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+}
+
+/* Experience Timeline */
+.timeline {
+    position: relative;
+    padding-left: 2rem;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--card-border);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 2.5rem;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -2.35rem;
+    top: 5px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--bg-main);
+    border: 2px solid var(--primary);
+    box-shadow: 0 0 10px var(--primary-glow);
+    transition: background 0.3s;
+}
+
+.timeline-item:hover::before {
+    background: var(--primary);
+}
+
+.job-title {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    color: var(--text-primary);
+    margin-bottom: 0.2rem;
+}
+
+.company-info {
+    font-size: 0.95rem;
+    color: var(--primary);
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+.company-info span {
+    color: var(--text-secondary);
+    font-weight: 400;
+}
+
+.job-desc {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    padding-left: 1rem;
+    border-left: 2px solid var(--card-border);
+}
+
+.job-desc li {
+    margin-bottom: 0.5rem;
+    list-style-type: none;
+    position: relative;
+}
+
+.job-desc li::before {
+    content: '▹';
+    position: absolute;
+    left: -1.2rem;
+    color: var(--primary);
+}
+
+/* Skills Grid */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.skill-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.skill-card:hover {
+    border-color: var(--primary);
+    background: rgba(0, 229, 255, 0.05);
+}
+
+.skill-category {
+    font-family: var(--font-heading);
+    color: var(--text-primary);
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.skill-list {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+/* Two Col Layout */
+.two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+@media (max-width: 768px) {
+    .two-col {
+        grid-template-columns: 1fr;
+    }
+    
+    h1 {
+        font-size: 2.2rem;
+    }
+    
+    .contact-info {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.8rem;
+    }
+}
+
+/* Badges */
+.badge {
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    background: rgba(0, 229, 255, 0.1);
+    color: var(--primary);
+    border-radius: 20px;
+    font-size: 0.8rem;
+    border: 1px solid rgba(0, 229, 255, 0.2);
+    margin-right: 0.5rem;
+}
+
+/* Print Styles (@media print) */
+@media print {
+    @page {
+        margin: 10mm; /* Chrome entende cm/mm para margins na impressão física */
+    }
+
+    /* Resets colors for black & white / print mode */
+    body {
+        background-color: #FFFFFF !important;
+        background-image: none !important;
+        color: #000000 !important;
+        font-size: 10pt;
+    }
+
+    .container {
+        padding: 0 1.5rem;
+        max-width: 100%;
+        margin: 0;
+    }
+
+    /* Reset Gradients and Headings */
+    h1 {
+        background: none !important;
+        -webkit-background-clip: unset !important;
+        background-clip: unset !important;
+        -webkit-text-fill-color: #000 !important;
+        color: #000 !important;
+        font-size: 2rem;
+        margin-bottom: 0;
+    }
+
+    h2 {
+        color: #333 !important;
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+    }
+
+    header {
+        padding: 0;
+        margin-bottom: 1rem;
+        border-bottom: 2px solid #000;
+    }
+
+    header::after {
+        display: none;
+    }
+
+    .contact-info {
+        gap: 1rem;
+        font-size: 0.9rem;
+    }
+
+    .contact-info a, .contact-info span {
+        color: #333 !important;
+        text-shadow: none !important;
+        text-decoration: none !important;
+    }
+
+    .contact-info i, .section-title i {
+        color: #000 !important;
+    }
+
+    /* Cards */
+    .card, .skill-card {
+        background: #fff !important;
+        border: 1px solid #ccc !important;
+        backdrop-filter: none;
+        box-shadow: none !important;
+        padding: 0.8rem 1.2rem;
+        page-break-inside: avoid;
+        margin-bottom: 0.8rem;
+    }
+
+    .badge {
+        background: transparent !important;
+        color: #000 !important;
+        border: 1px solid #666 !important;
+    }
+
+    .timeline {
+        padding-left: 1.8rem;
+        margin-left: 0.5rem;
+    }
+
+    .timeline::before {
+        background: #000;
+        width: 2px;
+    }
+
+    .timeline-item {
+        margin-bottom: 1rem;
+        page-break-inside: avoid;
+    }
+
+    .timeline-item::before {
+        background: #fff !important;
+        border: 2px solid #000 !important;
+        box-shadow: none !important;
+        left: -2.15rem;
+    }
+
+    .job-title {
+        color: #000 !important;
+        font-size: 1.1rem;
+    }
+
+    .company-info {
+        color: #333 !important;
+        margin-bottom: 0.3rem;
+        font-size: 0.9rem;
+    }
+
+    .job-desc {
+        border-left: 1px solid #ccc;
+        padding-left: 1rem;
+        font-size: 0.95rem;
+    }
+
+    .job-desc li {
+        color: #333;
+        margin-bottom: 0.2rem;
+    }
+
+    .job-desc li::before {
+        color: #000;
+        left: -1rem;
+    }
+
+    /* Layout tweaks */
+    .two-col {
+        gap: 1rem;
+    }
+
+    section {
+        margin-bottom: 1rem;
+    }
+
+    .section-title {
+        color: #000 !important;
+        margin-bottom: 0.5rem;
+        font-size: 1.3rem;
+    }
+
+    p, .skill-list {
+        color: #333 !important;
+        margin-bottom: 0.5rem;
+        font-size: 0.9rem;
+    }
+
+    /* Disable Animations */
+    .animate, .delay-1, .delay-2, .delay-3 {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+    }
+}
